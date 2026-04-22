@@ -114,18 +114,19 @@ export function Kasus() {
               {selected ? question.sentenceFull : question.sentenceWithBlank}
             </div>
 
-            {/* Translation hint for new words — always visible */}
-            {question.isNewWord && question.translation && (
-              <div
-                className="mt-3 text-sm italic"
-                style={{ color: 'rgba(245,232,204,0.4)', fontFamily: 'var(--font-body)', textAlign: 'center' }}
-              >
-                {question.noun} = {question.translation}
-              </div>
-            )}
-
             {selected && (
               <div className="mt-4 animate-in" style={{ textAlign: 'center' }}>
+                {question.nominativArticle && (
+                  <div className="mb-2" style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'rgba(245,232,204,0.6)', fontStyle: 'italic' }}>
+                    {question.nominativArticle} {question.noun}
+                    {question.translation && <span style={{ color: 'rgba(245,232,204,0.35)' }}> — {question.translation}</span>}
+                  </div>
+                )}
+                {!question.nominativArticle && question.translation && (
+                  <div className="mb-2" style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'rgba(245,232,204,0.6)', fontStyle: 'italic' }}>
+                    {question.noun} — {question.translation}
+                  </div>
+                )}
                 <span
                   className="text-xs uppercase tracking-widest px-2 py-0.5"
                   style={{

@@ -9,6 +9,7 @@ export interface KasusQuestion {
   correctArticle: string;
   correctCase: string;
   noun: string;
+  nominativArticle?: string;
   explanation: string;
   isNewWord: boolean;
   translation?: string;
@@ -75,8 +76,10 @@ Return ONLY valid JSON:
       correctArticle,
       correctCase: targetCase,
       noun: word.german,
+      nominativArticle: word.article ?? undefined,
       explanation: data.explanation,
       isNewWord: false,
+      translation: word.translation ?? undefined,
     };
   }
 
@@ -91,6 +94,7 @@ Rules:
 Return ONLY valid JSON:
 {
   "noun": "base form of the noun (e.g. Hund or Kinder)",
+  "nominativArticle": "nominativ article of the noun (der/die/das), or null if plural",
   "correctArticle": "the declined article in the sentence (der/die/das/den/dem/des/den for plural dative)",
   "sentenceWithBlank": "sentence where the article is replaced with _____",
   "sentenceFull": "full sentence with correct article",
@@ -105,6 +109,7 @@ Return ONLY valid JSON:
       correctArticle: data.correctArticle,
       correctCase: targetCase,
       noun: data.noun,
+      nominativArticle: data.nominativArticle ?? undefined,
       explanation: data.explanation,
       isNewWord: true,
       translation: data.translation,

@@ -18,6 +18,7 @@ export interface KasusQuestion {
   correctArticle: string;
   correctCase: string;
   noun: string;
+  nominativArticle?: string;
   explanation: string;
   isNewWord: boolean;
   translation?: string;
