@@ -93,7 +93,7 @@ export function Practice() {
     setTimeout(() => {
       setCurrent(pickNext(activeWords, nextStreaks, current.id));
     }, 120);
-  }, [current, streaks, activeWords, reviewMutation]);
+  }, [current, streaks, activeWords]);
 
   const handleRestart = useCallback(() => {
     setStreaks({});
