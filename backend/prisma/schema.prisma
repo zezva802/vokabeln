@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Word {
+  id          String   @id @default(cuid())
+  german      String
+  article     String?
+  translation String
+  type        String?
+  lesson      Int?
+
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([german])
+}
+
+model Verb {
+  id          String   @id @default(cuid())
+  infinitiv   String   @unique
+  praesens    String?
+  imperfekt   String
+  partizip2   String
+  hilfsverb   String
+  translation String?
+  createdAt   DateTime @default(now())
+}
