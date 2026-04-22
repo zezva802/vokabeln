@@ -6,15 +6,17 @@ import { Kasus } from '@/components/Kasus';
 import { VerbPractice } from '@/components/VerbPractice';
 import { WordList } from '@/components/WordList';
 import { ImportWords } from '@/components/ImportWords';
+import { SentencePractice } from '@/components/SentencePractice';
 
-type Tab = 'practice' | 'kasus' | 'verben' | 'words' | 'import';
+type Tab = 'practice' | 'kasus' | 'verben' | 'satze' | 'words' | 'import';
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: 'practice', label: 'Üben', icon: '⚔' },
   { id: 'kasus', label: 'Kasus', icon: '✎' },
   { id: 'verben', label: 'Verben', icon: '∞' },
+  { id: 'satze', label: 'Sätze', icon: '✦' },
   { id: 'words', label: 'Wortschatz', icon: '☰' },
-  { id: 'import', label: 'Importieren', icon: '✦' },
+  { id: 'import', label: 'Importieren', icon: '+' },
 ];
 
 export default function Home() {
@@ -97,6 +99,7 @@ export default function Home() {
         {tab === 'practice' && <Practice />}
         {tab === 'kasus' && <Kasus />}
         {tab === 'verben' && <VerbPractice />}
+        {tab === 'satze' && <SentencePractice />}
         {tab === 'words' && <WordList />}
         {tab === 'import' && <ImportWords />}
       </div>

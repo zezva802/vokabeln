@@ -123,7 +123,8 @@ Return ONLY valid JSON:
       messages: [{ role: 'user', content: prompt }],
     });
     const raw = (message.content[0] as { type: string; text: string }).text.trim();
-    const text = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/, '').trim();
-    return JSON.parse(text);
+    const match = raw.match(/\{[\s\S]*\}/);
+    if (!match) throw new Error('No JSON object found in Claude response');
+    return JSON.parse(match[0]);
   }
 }

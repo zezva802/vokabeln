@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { WordsModule } from './words/words.module';
 import { KasusModule } from './kasus/kasus.module';
 import { VerbsModule } from './verbs/verbs.module';
+import { SentencesModule } from './sentences/sentences.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { VerbsModule } from './verbs/verbs.module';
     WordsModule,
     KasusModule,
     VerbsModule,
+    SentencesModule,
   ],
 })
 export class AppModule {}

@@ -28,6 +28,26 @@ export const kasusApi = {
   getQuestion: () => api.get<KasusQuestion>('/kasus/question').then(r => r.data),
 };
 
+export interface SentenceQuestion {
+  englishSentence: string;
+  germanSentence: string;
+  acceptedVariations: string[];
+  focusWord: string;
+  focusTranslation: string;
+}
+
+export interface CheckResult {
+  correct: boolean;
+  close: boolean;
+  germanSentence: string;
+}
+
+export const sentenceApi = {
+  getQuestion: () => api.get<SentenceQuestion>('/sentences/question').then(r => r.data),
+  check: (userAnswer: string, acceptedVariations: string[]) =>
+    api.post<CheckResult>('/sentences/check', { userAnswer, acceptedVariations }).then(r => r.data),
+};
+
 export interface Verb {
   id: string;
   infinitiv: string;
